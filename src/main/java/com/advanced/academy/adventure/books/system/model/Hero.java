@@ -1,13 +1,29 @@
 package com.advanced.academy.adventure.books.system.model;
 
-public class Hero {
-    private Integer id;
-    private Customer customer;
-    private String nickname;
-    private Integer reputation;
-    private Integer numberOfLives;
-    private Adventure adventure;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "heroes")
+
+public class Hero {
+
+    @Id
+    @Column(name = "id")
+    private Integer id;
+    @Column(name = "nick_name")
+    private String nickname;
+    @Column(name = "reputation")
+    private Integer reputation;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "adventure_id")
+    private Adventure adventure;
+    @Column(name = "number_of_lives")
+    private Integer numberOfLives;
 
     public Adventure getAdventure() {
         return adventure;
