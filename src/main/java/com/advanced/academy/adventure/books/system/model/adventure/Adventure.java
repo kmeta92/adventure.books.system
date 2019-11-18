@@ -1,4 +1,7 @@
-package com.advanced.academy.adventure.books.system.model;
+package com.advanced.academy.adventure.books.system.model.adventure;
+
+import com.advanced.academy.adventure.books.system.model.Tag;
+import com.advanced.academy.adventure.books.system.model.adventure.Step;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -9,13 +12,30 @@ import java.util.Set;
 public class Adventure {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 
     @Column(name = "name")
     private String name;
 
-    @OneToOne()
+    public Step getFirstStep() {
+        return firstStep;
+    }
+
+    public void setFirstStep(Step firstStep) {
+        this.firstStep = firstStep;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
+    }
+
+    @OneToOne(cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
     @JoinColumn(name = "first_step_id")
     private Step firstStep;
 

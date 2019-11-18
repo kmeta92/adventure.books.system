@@ -1,4 +1,6 @@
-package com.advanced.academy.adventure.books.system.model;
+package com.advanced.academy.adventure.books.system.model.adventure;
+
+import com.advanced.academy.adventure.books.system.model.Customer;
 
 import javax.persistence.*;
 
@@ -7,17 +9,18 @@ import javax.persistence.*;
 public class Choice {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "step_given_in_id")
     private Step stepGivenIn;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "results_in_step_id")
     private Step resultInStep;
 
@@ -63,5 +66,9 @@ public class Choice {
 
     public void setResultInStep(Step resultInStep) {
         this.resultInStep = resultInStep;
+    }
+
+
+    public class Hero {
     }
 }

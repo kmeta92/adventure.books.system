@@ -1,4 +1,7 @@
-package com.advanced.academy.adventure.books.system.model;
+package com.advanced.academy.adventure.books.system.model.adventure;
+
+import com.advanced.academy.adventure.books.system.model.Customer;
+import com.advanced.academy.adventure.books.system.model.adventure.Adventure;
 
 import javax.persistence.*;
 
@@ -8,6 +11,7 @@ import javax.persistence.*;
 public class Hero {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
     @Column(name = "nick_name")
